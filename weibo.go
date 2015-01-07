@@ -219,15 +219,15 @@ func NewAPIClient(app_key, app_secret, redirect_uri, response_type string) *APIC
 		return &http.Client{
 			Transport: &http.Transport{
 				Dial: func(network, addr string) (net.Conn, error) {
-					deadline := time.Now().Add(15 * time.Second)
-					conn, err := net.DialTimeout(network, addr, 15*time.Second)
+					deadline := time.Now().Add(30 * time.Second)
+					conn, err := net.DialTimeout(network, addr, 30*time.Second)
 					if err != nil {
 						return nil, err
 					}
 					conn.SetDeadline(deadline)
 					return conn, nil
 				},
-				ResponseHeaderTimeout: 15 * time.Second,
+				ResponseHeaderTimeout: 30 * time.Second,
 				// Proxy: http.ProxyURL(proxy),
 			},
 		}, nil
