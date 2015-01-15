@@ -29,3 +29,8 @@ func (api *APIClient) GET_account_get_uid(params map[string]interface{}, uid *Us
 func (api *APIClient) GET_account_get_email(params map[string]interface{}, email *Email) error {
 	return api.GET("account/profile/email", params, email)
 }
+
+//OAuth授权之后退出登录主要用于widget等web应用场合。
+func (api *APIClient) GET_account_end_session(params map[string]interface{}, result *User) error {
+	return api.GET("account/end_session", params, result)
+}

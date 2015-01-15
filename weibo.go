@@ -105,7 +105,8 @@ func encodeParams(params map[string]interface{}) (string, error) {
 		}
 		return values.Encode(), nil
 	}
-	return "", errors.New("Params Is Empty!")
+	return "", nil
+	//return "", errors.New("Params Is Empty!")
 }
 
 func encodeMultipart(params map[string]interface{}) (multipartContentType string, multipartData *bytes.Buffer, err error) {
@@ -209,7 +210,7 @@ func (a *APIClient) call(base_url, uri, extension, access_token string, method i
 	return nil
 }
 
-func (api *APIClient) is_expires() bool {
+func (api *APIClient) Is_expires() bool {
 	return api.access_token == "" || api.expires < time.Now().Unix()
 }
 
