@@ -181,6 +181,7 @@ func (a *APIClient) call(base_url, uri, extension, access_token string, method i
 	defer a.Pool.Put(client)
 
 	url := fmt.Sprintf("%s%s%s", base_url, uri, extension)
+	fmt.Println("call:", url, params)
 	body, err := call(client.(*http.Client), url, method, access_token, params)
 	if err != nil {
 		log.Error(err)
